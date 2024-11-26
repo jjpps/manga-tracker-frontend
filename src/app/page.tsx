@@ -18,14 +18,23 @@ export default function Home() {
         const data = await getMangas(value);
         setMangaData(data)
     }
+    const saveManga=async (value:MangaDex|null)=>{
+        if(value){
+            console.log("salvando manga" + value.titulo);
+            setMangaData(null)
+            setMangaLink("")
+        }
+    }
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="">
-          <SearchForm value={mangaLink} onChange={handleChange} onsubmit={() => handleSubmit(mangaLink)} />
-          <MangaData data={mangaData}/>
-      </main>
+      <div className="container mx-auto">
+          <main className="">
+              <SearchForm value={mangaLink} onChange={handleChange} onsubmit={() => handleSubmit(mangaLink)}/>
+              <br/>
+              <MangaData data={mangaData} onSubmit={()=>saveManga(mangaData)}/>
+            </main>
 
-    </div>
-  );
+       </div>
+)
+    ;
 }

@@ -1,17 +1,32 @@
-// app/saveManga/[id]/page.tsx
+'use client'
 
-export default async function SaveMangaPage({ params }: { params: { mangaId: string } }) {
+import { useSearchParams } from 'next/navigation'
+import {useEffect, useState} from "react";
+import {MangaDex} from "@/types/mangaDex";
+import {getManga} from "@/services/mangaService";
+import MangaDataDetalhes from "@/components/MangaDataDetalhes";
 
-    await params;
-    console.log(params)
 
-    // Agora você pode acessar o 'id' de forma segura
-    const { mangaId } = params;
+export default function SaveManga(){
+    const [mangaData,setMangaData] = useState<MangaDex| null>(null);
 
-    return (
-        <div>
-            <h1>Manga com ID: {mangaId}</h1>
-            {/* Renderize as informações baseadas no 'id' */}
-        </div>
-    );
+    const searchParams = useSearchParams()
+    const uuid = searchParams?.get('id');
+
+    useEffect(() => {
+        if (!uuid) return;
+        console.log(uuid)
+
+        const getMangaById = async ()=>{
+            const response = await getManga(uuid);
+
+            if(!response) return;
+            setMangaData(response)
+        };
+    getMangaById();
+    },[uuid]);
+
+
+    return <MangaDataDetalhes value={mangaData} />;
+
 }

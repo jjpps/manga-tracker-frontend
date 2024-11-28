@@ -4,4 +4,8 @@ export interface MangaDex {
     quantidadeCapitulos:string;
     numeroUltimoCapitulo:string;
     nomeUltimoCapitulo:string;
+    capLido:number;
+    cover:string;
+    status:string;
+    uuid:string;
 }

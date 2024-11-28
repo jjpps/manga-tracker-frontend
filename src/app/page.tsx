@@ -3,7 +3,7 @@ import SearchForm from "@/components/SearchForm";
 import {useState} from "react";
 import {getMangas} from "@/services/mangaService";
 import {MangaDex} from "@/types/mangaDex";
-import MangaData from "@/components/MangaData";
+import MangaDataResumido from "@/components/MangaDataResumido";
 
 export default function Home() {
 
@@ -16,22 +16,17 @@ export default function Home() {
     };
     const handleSubmit=async (value:string)=>{
         const data = await getMangas(value);
+        console.log(data)
         setMangaData(data)
     }
-    const saveManga=async (value:MangaDex|null)=>{
-        if(value){
-            console.log("salvando manga" + value.titulo);
-            setMangaData(null)
-            setMangaLink("")
-        }
-    }
+
 
   return (
       <div className="container mx-auto">
           <main className="">
               <SearchForm value={mangaLink} onChange={handleChange} onsubmit={() => handleSubmit(mangaLink)}/>
               <br/>
-              <MangaData data={mangaData} onSubmit={()=>saveManga(mangaData)}/>
+              <MangaDataResumido data={mangaData} />
             </main>
 
        </div>

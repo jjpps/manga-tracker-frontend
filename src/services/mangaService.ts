@@ -17,3 +17,8 @@ export const saveManga=async (id:string | undefined | null,capLido:number|undefi
     const response = await axios.post('http://localhost:8080/manga/',data);
     return response.data;
 }
+export const getAll =async ():Promise<MangaDex[]> => {
+    const response = await axios.get(`http://localhost:8080/manga/GetAll`);
+    return response.data;
+
+}

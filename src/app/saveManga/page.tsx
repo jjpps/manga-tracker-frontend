@@ -27,8 +27,6 @@ export default function SaveManga(){
     useEffect(() => {
         if (!uuid) return;
         console.log(uuid)
-
-
         const getMangaById = async ()=>{
             const response = await getManga(uuid);
 

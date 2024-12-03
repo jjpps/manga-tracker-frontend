@@ -5,55 +5,35 @@ const MangaDataResumido=({data}:{data:MangaDex|null;})=>{
 
     if(data){
         return (
+            <div>
+                <Link
+                    href={{
+                        pathname: `/saveManga/`,
+                        query: {
+                            id: data.uuid,
+                        },
+                    }}
+                    className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100"
+                >
+                    <div className="relative">
+                        <img
+                            className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+                            src="https://mangadex.org/covers/16c34950-954c-4f0d-808e-d8278a546339/9caa16b1-591a-45a1-b5a6-1210316c4ce5.jpg"
+                            alt=""
+                        />
+                        {data.id != '0' && <span
+                            className="absolute top-2 left-2 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300"
+                        >Salvo   </span>}
 
-            <div className="box-border p-4 border-4 rounded-lg border-green-200">
 
-                <div className="flex flex-row">
-                    <div className="basis-1/2">
-                        Titulo
                     </div>
-                    <div className="basis-1/2">
-                        quantidade de Cap
+                    <div className="flex flex-col justify-between p-4 leading-normal">
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight">{data.titulo}</h5>
+                        <p className="mb-3 font-normal">Quantidade de Capitulos: {data.quantidadeCapitulos}</p>
                     </div>
-                    <div className="basis-1/2">
-                        Numero Ultimo Cap
-                    </div>
-                    <div className="basis-1/2">
-                        Nome Cap
-                    </div>
-                </div>
-                <div className="flex flex-row">
-                    <div className="basis-1/2">
-                        {data.titulo}
-                    </div>
-                    <div className="basis-1/2">
-                        {data.quantidadeCapitulos}
-                    </div>
-                    <div className="basis-1/2">
-                        {data.numeroUltimoCapitulo}
-                    </div>
-                    <div className="basis-1/2">
-                        {data.nomeUltimoCapitulo}
-                    </div>
-                </div>
-                <div className="border-b border-gray-900/10 pb-12">
-                </div>
-                <div className="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="submit"
-                            className="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
-                        <Link href={{
-                            pathname:`/saveManga/`,
-                            query:{
-                                id:data.uuid
-                            }
-                        }}> Salvar </Link>
-                    </button>
-                </div>
+                </Link>
             </div>
-
-
-        )
-            ;
+        );
     }
 
 

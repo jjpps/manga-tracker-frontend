@@ -37,7 +37,7 @@ export default function SaveManga(){
     },[uuid]);
 
     return (
-        <div>
+        <div className="p-2">
             {mangaData && (
                 <MangaDataDetalhes value={mangaData} onsubmit={handleSubmit} />
             )}

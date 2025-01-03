@@ -26,7 +26,7 @@ const MangaDataDetalhes =({value,onsubmit}:{
             <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
                 <div className="relative m-2.5 overflow-hidden text-white rounded-md">
                     <img
-                        src="https://mangadex.org/covers/16c34950-954c-4f0d-808e-d8278a546339/9caa16b1-591a-45a1-b5a6-1210316c4ce5.jpg"
+                        src={value.cover}
                         alt="card-image"/>
                 </div>
                 <div className="p-4">

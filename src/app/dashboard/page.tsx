@@ -18,6 +18,7 @@ export default function Dashboard() {
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+            {mangas?.length ==0 && <h3>Sem Mangas Cadastrados</h3>}
             {mangas?.map((item) => (
                 <div key={item.uuid} className="flex flex-col items-stretch ">
                     <MangaDataResumido key={item.uuid} data={item}/>
